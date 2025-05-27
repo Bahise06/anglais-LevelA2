@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-T">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprentissage de l'anglais pour Romy & Ruben</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="user-selection">
+        <h1>Qui est-ce qui joue ?</h1>
+        <button onclick="selectUser('Romy')">Romy</button>
+        <button onclick="selectUser('Ruben')">Ruben</button>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <header>
+            <h1>Let's learn English, <span id="user-name"></span>!</h1>
+            <div id="level-selection">
+                <p>Choisis ton niveau :</p>
+                <button onclick="startQuiz(1)">Niveau 1 : Choix multiples</button>
+                <button onclick="startQuiz(2)">Niveau 2 : Traduction directe</button>
+            </div>
+        </header>
+
+        <main id="quiz-area" style="display: none;">
+            <div id="question-card">
+                <p id="question"></p>
+                <div id="answer-options"></div>
+                <input type="text" id="text-answer" style="display: none;" placeholder="Ta réponse...">
+            </div>
+            <button onclick="checkAnswer()">Valider</button>
+            <p id="feedback"></p>
+        </main>
+
+        <section id="history-area" style="display: none;">
+            <h2>Ton historique</h2>
+            <ul id="history-list"></ul>
+            <button onclick="showMenu()">Menu</button>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
