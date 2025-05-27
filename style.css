@@ -27,15 +27,32 @@ button {
     color: white;
     border: none;
     padding: 10px 20px;
-    margin: 10px;
+    margin: 10px 5px; /* Ajustement du margin */
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    border: none;
 }
 
 button:hover {
     background-color: #ffa000;
+}
+
+button.secondary {
+    background-color: #007bff;
+}
+
+button.secondary:hover {
+    background-color: #0056b3;
+}
+
+button.danger {
+    background-color: #dc3545;
+}
+
+button.danger:hover {
+    background-color: #c82333;
 }
 
 #question-card {
@@ -67,6 +84,7 @@ input[type="text"] {
 #feedback {
     font-weight: bold;
     font-size: 1.2em;
+    min-height: 1.5em; /* Pour éviter les sauts de page */
 }
 
 #history-list {
@@ -79,4 +97,8 @@ input[type="text"] {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
+}
+
+.history-buttons {
+    margin-top: 20px;
 }
