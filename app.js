@@ -21,21 +21,20 @@ function showMenu() {
 function startQuiz(level) {
     currentLevel = level;
     score = 0;
-    // La variable "vocabulary" vient du fichier mots.js
-    questions = [...vocabulary].sort(() => 0.5 - Math.random()).slice(0, 30);
+    // MODIFICATION 1 : Le nombre de questions est passé à 20
+    questions = [...vocabulary].sort(() => 0.5 - Math.random()).slice(0, 20);
     currentQuestionIndex = 0;
 
-    if (vocabulary.length < 30) {
-        alert("Attention : il n'y a pas assez de mots dans la liste (fichier mots.js) pour faire un quiz de 30 questions.");
+    // MODIFICATION 2 : La vérification est ajustée à 20
+    if (vocabulary.length < 20) {
+        alert("Attention : il n'y a pas assez de mots dans la liste (fichier mots.js) pour faire un quiz de 20 questions.");
         return;
     }
     
-    // On cache le menu et on affiche la zone de quiz
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('history-area').style.display = 'none';
     document.getElementById('quiz-area').style.display = 'block';
 
-    // On s'assure que la partie "questions" est visible et le "résumé" est caché
     document.getElementById('quiz-content').style.display = 'block';
     document.getElementById('quiz-summary').style.display = 'none';
 
@@ -44,8 +43,9 @@ function startQuiz(level) {
 
 function displayQuestion() {
     if (currentQuestionIndex < questions.length) {
+        // MODIFICATION 3 : Le compteur de questions affiche sur 20
         const questionData = questions[currentQuestionIndex];
-        document.getElementById('question').innerText = `Question ${currentQuestionIndex + 1}/30 : Comment dit-on "${questionData.francais}" en anglais ?`;
+        document.getElementById('question').innerText = `Question ${currentQuestionIndex + 1}/20 : Comment dit-on "${questionData.francais}" en anglais ?`;
         const answerOptionsContainer = document.getElementById('answer-options');
         const textAnswerInput = document.getElementById('text-answer');
         answerOptionsContainer.innerHTML = '';
@@ -68,7 +68,6 @@ function displayQuestion() {
                 button.onclick = () => checkAnswer(option);
                 answerOptionsContainer.appendChild(button);
             });
-            // On cible le bouton 'Valider' à l'intérieur de #quiz-content
             document.querySelector('#quiz-content > button').style.display = 'none';
         } else {
             textAnswerInput.style.display = 'block';
@@ -104,7 +103,6 @@ function checkAnswer(selectedOption = null) {
 }
 
 async function endQuiz() {
-    // On cache les questions et on affiche la zone de résumé
     document.getElementById('quiz-content').style.display = 'none';
     const summary = document.getElementById('quiz-summary');
     summary.style.display = 'block';
