@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-T">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apprentissage de l'anglais pour Romy & Ruben</title>
     <link rel="stylesheet" href="style.css">
@@ -21,6 +21,7 @@
                 <p>Choisis ton niveau :</p>
                 <button onclick="startQuiz(1)">Niveau 1 : Choix multiples</button>
                 <button onclick="startQuiz(2)">Niveau 2 : Traduction directe</button>
+                <button onclick="showHistory()" class="secondary">Voir les résultats</button>
             </div>
         </header>
 
@@ -37,11 +38,34 @@
         <section id="history-area" style="display: none;">
             <h2>Ton historique</h2>
             <ul id="history-list"></ul>
-            <button onclick="showMenu()">Menu</button>
+            <div class="history-buttons">
+                <button onclick="showMenu()">Menu</button>
+                <button onclick="resetHistory()" class="danger">Remettre à zéro</button>
+            </div>
         </section>
 
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyC_q9X2LdgA3R5rwjB4nC3TKGt8MhM4LAE",
+        authDomain: "app-romy-ruben.firebaseapp.com",
+        projectId: "app-romy-ruben",
+        storageBucket: "app-romy-ruben.appspot.com",
+        messagingSenderId: "1086054813589",
+        appId: "1:1086054813589:web:f2e820f4b39b563602f37c"
+      };
+
+      // Initialiser Firebase et créer un accès à la base de données Firestore
+      const app = firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore(); 
+    </script>
+    
+    <script src="mots.js"></script>
     <script src="app.js"></script>
+
 </body>
 </html>
