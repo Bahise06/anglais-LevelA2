@@ -26,15 +26,21 @@
         </header>
 
         <main id="quiz-area" style="display: none;">
-            <div id="question-card">
-                <p id="question"></p>
-                <div id="answer-options"></div>
-                <input type="text" id="text-answer" style="display: none;" placeholder="Ta réponse...">
+            
+            <div id="quiz-content">
+                <div id="question-card">
+                    <p id="question"></p>
+                    <div id="answer-options"></div>
+                    <input type="text" id="text-answer" style="display: none;" placeholder="Ta réponse...">
+                </div>
+                <button onclick="checkAnswer()">Valider</button>
+                <p id="feedback"></p>
             </div>
-            <button onclick="checkAnswer()">Valider</button>
-            <p id="feedback"></p>
-        </main>
 
+            <div id="quiz-summary" style="display: none;">
+            </div>
+
+        </main>
         <section id="history-area" style="display: none;">
             <h2>Ton historique</h2>
             <ul id="history-list"></ul>
@@ -58,8 +64,6 @@
         messagingSenderId: "1086054813589",
         appId: "1:1086054813589:web:f2e820f4b39b563602f37c"
       };
-
-      // Initialiser Firebase et créer un accès à la base de données Firestore
       const app = firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore(); 
     </script>
